@@ -10,7 +10,7 @@
 - 🥅 2022 Goals: Learn more about web3
 - ⚡ Fun fact: I love to play Dominoes and prepare Cocktails
 
-### Connect with me:
+<!-- ### Connect with me: -->
 
 <!-- [![website](./img/globe-light.svg)](https://codestackr.com#gh-light-mode-only)
 [![website](./img/globe-dark.svg)](https://codestackr.com#gh-dark-mode-only)
