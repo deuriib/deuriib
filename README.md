@@ -6,9 +6,10 @@
 ## I'm a Geek, Developer, and a Homie Bartender !!
 
 - 🌱 I’m currently learning everything 🤣
-- 🥅 2022 Goals: Learn more about web3 and React
-- 👯 I’m looking to collaborate with other content creators
+- 🥅 2023 Goals: Get AZ-900 & AZ-204 certifications
+- 👯 I’m looking to collaborate with others projects
 - ⚡ Fun fact: I love to play Dominoes and prepare Cocktails
+- ❤️ Love 🅰️ngular 
 
 <!-- ### Connect with me: -->
 
