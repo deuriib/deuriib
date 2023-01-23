@@ -5,11 +5,14 @@
 
 ## I'm a Geek, Developer, and a Homie Bartender !!
 
-- 🌱 I’m currently learning everything 🤣
-- 🥅 2023 Goals: Get AZ-900 & AZ-204 certifications
-- 👯 I’m looking to collaborate with others projects
-- ⚡ Fun fact: I love to play Dominoes and prepare Cocktails
-- ❤️ Love 🅰️ngular 
+- Learn Serverless framework 📚
+- Get certified in AZ-900 & AZ-20 🏆
+- Develop a personal project and launch it 🚀
+- Improve my knowledge in cloud technologies 🌩️
+- Collaborate with other developers on a project 🤝
+- Fun fact: I love to play Dominoes and prepare Cocktails
+- 
+### What are your goals for the new year? Let's make them happen together! 👨‍💻
 
 <!-- ### Connect with me: -->
 
