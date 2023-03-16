@@ -6,7 +6,7 @@
 ## I'm a Geek, Developer, and a Homie Bartender !!
 
 - Learn Serverless framework 📚
-- Get certified in AZ-900 & AZ-20 🏆
+- Get certified in AWS 🏆
 - Develop a personal project and launch it 🚀
 - Improve my knowledge in cloud technologies 🌩️
 - Collaborate with other developers on a project 🤝
