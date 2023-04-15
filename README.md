@@ -1,4 +1,4 @@
-# Deuri Vasquez (@deuriib<!--[website]-->) - Full Stack Software Developer on a mission to innovate and create 💻🚀"
+# Deuri Vasquez (@deuriib<!--[website]-->) - Software Developer on a mission to innovate and create 💻🚀"
 
 <!--[![Website](https://img.shields.io/website?label=deurivasquez.info&style=for-the-badge&url=https%3A%2F%2Fdeurivasquez.info)](https://deurivasquez.info)-->
 [![Twitter Follow](https://img.shields.io/twitter/follow/deuriib05?color=1DA1F2&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fdeuriib&screen_name=deuriib)
