@@ -68,6 +68,8 @@
 
 </details> -->
 
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=deuri&layout=compact&theme=radical)](https://github.com/deuri)
+
 <!-- [website]: https://deurivasquez.info -->
 [twitter]: https://twitter.com/deuriib05
 [linkedin]: https://linkedin.com/in/deuri-vasquez
