@@ -22,11 +22,11 @@
 [![website](./img/youtube-light.svg)](https://youtube.com/codestackr#gh-light-mode-only)
 [![website](./img/youtube-dark.svg)](https://youtube.com/codestackr#gh-dark-mode-only)
 &nbsp;&nbsp;-->
-[![website](./img/twitter-light.svg)](https://twitter.com/deuriib05#gh-light-mode-only)
-[![website](./img/twitter-dark.svg)](https://twitter.com/deuriib05#gh-dark-mode-only)
+[![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/twitter-light.svg)](https://twitter.com/deuriib05#gh-light-mode-only)
+[![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/twitter-dark.svg)](https://twitter.com/deuriib05#gh-dark-mode-only)
 &nbsp;&nbsp;
-[![website](./img/linkedin-light.svg)](https://linkedin.com/in/deurivasquez#gh-light-mode-only)
-[![website](./img/linkedin-dark.svg)](https://linkedin.com/in/deurivasquez#gh-dark-mode-only)
+[![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/linkedin-dark.svg)](https://linkedin.com/in/deurivasquez#gh-light-mode-only)
+[![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/linkedin-dark.svg)](https://linkedin.com/in/deurivasquez#gh-dark-mode-only)
 <!--&nbsp;&nbsp;
 [![website](./img/instagram-light.svg)](https://instagram.com/codeSTACKr#gh-light-mode-only)
 [![website](./img/instagram-dark.svg)](https://instagram.com/codeSTACKr#gh-dark-mode-only) -->
