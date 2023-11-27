@@ -6,7 +6,7 @@
 ## I'm a Geek, Developer, and a Gym Rat 🏋🏽‍♂️ !!
 
 - Learn Serverless framework 📚
-- Get certified in AWS 🏆
+- Get certified in Azure Developer Associate  🏆
 - Develop a personal project and launch it 🚀
 - Improve my knowledge in cloud technologies 🌩️
 - Collaborate with other developers on a project 🤝
