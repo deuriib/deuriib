@@ -1,16 +1,12 @@
 # Deuri Vasquez - Software Developer on a mission to innovate and create 💻🚀"
 
 <!--[![Website](https://img.shields.io/website?label=deurivasquez.info&style=for-the-badge&url=https%3A%2F%2Fdeurivasquez.info)](https://deurivasquez.info)-->
-[![Twitter Follow](https://img.shields.io/twitter/follow/deuriib05?color=1DA1F2&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fdeuriib&screen_name=deuriib)
+[![Twitter Follow](https://img.shields.io/twitter/follow/deuriib?color=1DA1F2&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fdeuriib&screen_name=deuriib)
 
 ## I'm a Geek, Developer, and a Gym Rat 🏋🏽‍♂️ !!
 
-- Learn Serverless framework 📚
-- Get certified in Azure Developer Associate  🏆
-- Develop a personal project and launch it 🚀
 - Improve my knowledge in cloud technologies 🌩️
 - Collaborate with other developers on a project 🤝
-- Fun fact: I love to play Dominoes and prepare Cocktails
 
 #### What are your goals for the new year? Let's make them happen together! 👨‍💻
 
@@ -42,7 +38,6 @@
 <img align="left" alt="JavaScript" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" style="padding-right:10px;" />
 <img align="left" alt="Node.js" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" style="padding-right:10px;" />
 <img align="left" alt="MongoDB" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" style="padding-right:10px;" />
-<img align="left" alt="MySQL" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" style="padding-right:10px;" />
 <img align="left" alt="GraphQL" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" style="padding-right:10px;" />
 
 <br />
@@ -68,5 +63,5 @@
 </details>
 
 <!-- [website]: https://deurivasquez.info -->
-[twitter]: https://twitter.com/deuriib05
-[linkedin]: https://linkedin.com/in/deuri-vasquez
+[twitter]: https://twitter.com/deuriib
+[linkedin]: https://linkedin.com/in/deurivasquez
