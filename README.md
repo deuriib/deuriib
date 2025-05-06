@@ -1,9 +1,6 @@
 # Deuri Vasquez - Software Developer on a mission to innovate and create 💻🚀"
 
-<!--[![Website](https://img.shields.io/website?label=deurivasquez.info&style=for-the-badge&url=https%3A%2F%2Fdeurivasquez.info)](https://deurivasquez.info)-->
-[![Twitter Follow](https://img.shields.io/twitter/follow/deuriib?color=1DA1F2&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fdeuriib&screen_name=deuriib)
-
-## I'm a Geek, Developer, and a Gym Rat 🏋🏽‍♂️ !!
+## I'm a Gym Rat 🏋🏽‍♂️ !!
 
 - Improve my knowledge in cloud technologies 🌩️
 - Collaborate with other developers on a project 🤝
@@ -18,9 +15,6 @@
 [![website](./img/youtube-light.svg)](https://youtube.com/codestackr#gh-light-mode-only)
 [![website](./img/youtube-dark.svg)](https://youtube.com/codestackr#gh-dark-mode-only)
 &nbsp;&nbsp;-->
-[![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/twitter-light.svg)](https://twitter.com/deuriib05#gh-light-mode-only)
-[![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/twitter-dark.svg)](https://twitter.com/deuriib05#gh-dark-mode-only)
-&nbsp;&nbsp;
 [![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/linkedin-dark.svg)](https://linkedin.com/in/deurivasquez#gh-light-mode-only)
 [![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/linkedin-dark.svg)](https://linkedin.com/in/deurivasquez#gh-dark-mode-only)
 <!--&nbsp;&nbsp;
@@ -54,14 +48,4 @@
 5. 💪 Opened PR [#1](https://github.com/mongodb-developer/mongodb-ecommerce/pull/1) in [mongodb-developer/mongodb-ecommerce](https://github.com/mongodb-developer/mongodb-ecommerce) -->
 <!--END_SECTION:activity-->
 
-<!-- </details> -->
-<details>
-  <summary>⚡ GitHub Stats</summary>
-
-  <img align="left" alt="deuriib's GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=deuriib&show_icons=true&hide_border=false&title_color=ff652f&icon_color=FFE400&bg_color=09131B&text_color=ffffff&border_color=0c1a25" />
-
-</details>
-
-<!-- [website]: https://deurivasquez.info -->
-[twitter]: https://twitter.com/deuriib
 [linkedin]: https://linkedin.com/in/deurivasquez
