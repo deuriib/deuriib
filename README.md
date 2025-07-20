@@ -1,7 +1,5 @@
 # Deuri Vasquez - Software Developer on a mission to innovate and create 💻🚀"
 
-## I'm a Gym Rat 🏋🏽‍♂️ !!
-
 - Improve my knowledge in cloud technologies 🌩️
 - Collaborate with other developers on a project 🤝
 
