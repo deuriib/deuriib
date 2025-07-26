@@ -1,6 +1,6 @@
 # Deuri Vasquez - Software Developer on a mission to innovate and create 💻🚀"
 
-[![Deploy to GitHub Pages](https://github.com/deuriib/deuriib/actions/workflows/deploy-gh-pages.yml/badge.svg?branch=gh-pages)](https://github.com/deuriib/deuriib/actions/workflows/deploy-gh-pages.yml)
+[![pages-build-deployment](https://github.com/deuriib/deuriib/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/deuriib/deuriib/actions/workflows/pages/pages-build-deployment)
 
 - Improve my knowledge in cloud technologies 🌩️
 - Collaborate with other developers on a project 🤝
