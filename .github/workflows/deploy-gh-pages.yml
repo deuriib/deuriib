@@ -1,46 +1,46 @@
-name: Deploy to GitHub Pages
+name: Deploy GitHub Pages
 
 on:
   push:
     branches:
-      - master # Trigger this workflow whenever there's a push to the 'main' branch
+      - main # Trigger this workflow whenever there's a push to the 'main' branch
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write # Needed to push to the gh-pages branch
-      pages: write    # Needed for the deployment to GitHub Pages
-      id-token: write # Needed for OIDC authentication by actions/deploy-pages
 
     steps:
-      - name: Checkout repository
+      - name: Checkout main branch
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Important for some deployment actions
-
-      - name: Set up Node.js (if you have JS assets that need building, otherwise optional)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20' # Or your preferred Node.js version
+          # Fetch all history for all branches, which is sometimes required by deploy actions
+          fetch-depth: 0
 
       # If you have a build step (e.g., compiling Sass, running a static site generator),
-      # add it here. For a simple HTML/CSS, this step might not be strictly necessary
-      # unless you want to put your source files in a subfolder and copy the output.
-      # Example for building:
-      # - name: Build static files
-      #   run: |
-      #     npm install # if you have a package.json for build tools
-      #     npm run build # or your build command, which should output to a 'dist' or 'build' folder
+      # add it here. For a simple HTML/CSS site where files are ready to deploy,
+      # you can skip this 'Build' section.
+      # Example (if your site is in a 'src' folder and you need to build it to a 'dist' folder):
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '18'
+      # - name: Install dependencies
+      #   run: npm install
+      # - name: Build website
+      #   run: npm run build # Assuming 'build' script outputs to 'dist'
 
-      - name: Upload artifact to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          # Path to your static files relative to the repository root.
-          # If your index.html and style.css are directly in the root of 'main', use '.'
-          # If they are in a folder like 'public' or 'dist', use 'public/' or 'dist/'
-          path: . # This tells the action to package everything at the root of your repo
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 # Uses the official GitHub Pages deployment action
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # The directory containing your deployable files (index.html, style.css etc.)
+          # If your files are at the root of your main branch, use '.'
+          # If your files are in a 'dist' folder after a build step, use 'dist'
+          publish_dir: .
+          # This ensures Jekyll processing is bypassed if not using Jekyll
+          # which is typical for simple HTML/CSS sites.
+          force_orphan: true # Recommended to ensure gh-pages branch only contains latest deployment
+          keep_files: false  # Ensure old files are removed if not in current deployment
+          cname: 'deuriib.github.io' # Ensure this is present if using a custom domain or default username.github.io
