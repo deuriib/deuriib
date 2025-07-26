@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # Trigger this workflow whenever there's a push to the 'main' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to push to the gh-pages branch
+      pages: write    # Needed for the deployment to GitHub Pages
+      id-token: write # Needed for OIDC authentication by actions/deploy-pages
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Important for some deployment actions
+
+      - name: Set up Node.js (if you have JS assets that need building, otherwise optional)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Or your preferred Node.js version
+
+      # If you have a build step (e.g., compiling Sass, running a static site generator),
+      # add it here. For a simple HTML/CSS, this step might not be strictly necessary
+      # unless you want to put your source files in a subfolder and copy the output.
+      # Example for building:
+      # - name: Build static files
+      #   run: |
+      #     npm install # if you have a package.json for build tools
+      #     npm run build # or your build command, which should output to a 'dist' or 'build' folder
+
+      - name: Upload artifact to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Path to your static files relative to the repository root.
+          # If your index.html and style.css are directly in the root of 'main', use '.'
+          # If they are in a folder like 'public' or 'dist', use 'public/' or 'dist/'
+          path: . # This tells the action to package everything at the root of your repo
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # Uses the official GitHub Pages deployment action
