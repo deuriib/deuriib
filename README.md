@@ -1,11 +1,13 @@
 # Deuri Vasquez - Software Developer on a mission to innovate and create 💻🚀"
 
+[![Deploy to GitHub Pages](https://github.com/deuriib/deuriib/actions/workflows/deploy-gh-pages.yml/badge.svg?branch=gh-pages)](https://github.com/deuriib/deuriib/actions/workflows/deploy-gh-pages.yml)
+
 - Improve my knowledge in cloud technologies 🌩️
 - Collaborate with other developers on a project 🤝
 
 #### What are your goals for the new year? Let's make them happen together! 👨‍💻
 
-### Connect with me:
+### Connect with me
 
 <!-- [![website](./img/globe-light.svg)](https://codestackr.com#gh-light-mode-only)
 [![website](./img/globe-dark.svg)](https://codestackr.com#gh-dark-mode-only)
@@ -13,14 +15,15 @@
 [![website](./img/youtube-light.svg)](https://youtube.com/codestackr#gh-light-mode-only)
 [![website](./img/youtube-dark.svg)](https://youtube.com/codestackr#gh-dark-mode-only)
 &nbsp;&nbsp;-->
+
 [![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/linkedin-dark.svg)](https://linkedin.com/in/deurivasquez#gh-light-mode-only)
 [![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/linkedin-dark.svg)](https://linkedin.com/in/deurivasquez#gh-dark-mode-only)
+
 <!--&nbsp;&nbsp;
 [![website](./img/instagram-light.svg)](https://instagram.com/codeSTACKr#gh-light-mode-only)
 [![website](./img/instagram-dark.svg)](https://instagram.com/codeSTACKr#gh-dark-mode-only) -->
 
-
-### Languages and Tools:
+### Languages and Tools
 
 <img align="left" alt="GitHub" width="26px" src="https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png" style="padding-right:10px;" />
 <img align="left" alt="Git" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" style="padding-right:10px;" />
@@ -45,5 +48,3 @@
 4. 🎉 Merged PR [#1](https://github.com/mongodb-developer/mongodb-ecommerce/pull/1) in [mongodb-developer/mongodb-ecommerce](https://github.com/mongodb-developer/mongodb-ecommerce)
 5. 💪 Opened PR [#1](https://github.com/mongodb-developer/mongodb-ecommerce/pull/1) in [mongodb-developer/mongodb-ecommerce](https://github.com/mongodb-developer/mongodb-ecommerce) -->
 <!--END_SECTION:activity-->
-
-[linkedin]: https://linkedin.com/in/deurivasquez
