@@ -71,8 +71,10 @@ _A brief description of another project, perhaps one from your university or a p
 
 ### 🌱 What I'm Currently Learning
 
-- [New language or framework you're exploring, e.g., "Exploring Rust for high-performance systems."]
-- [A new cloud service, e.g., "Deepening my knowledge of Azure Functions and Serverless architecture."]
+- Exploring Web2 to Web3 transitions and blockchain technologies.
+- Enhancing my skills in Angular and Blazor for modern web applications.
+- Diving deeper into Azure Functions and Serverless architecture.
+- Improving my knowledge of DevOps practices and containerization with Docker and Kubernetes.
 
 ---
 
