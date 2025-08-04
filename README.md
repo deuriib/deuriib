@@ -49,26 +49,6 @@ Here's a snapshot of the technologies I work with:
 
 ---
 
-### 💻 Featured Projects
-
-Feel free to explore some of my key projects, showcasing my skills in system design and full-stack development.
-
-#### **[Project Title 1 - e.g., Mintoria Platform]**
-
-_A brief, 1-2 sentence description of the project, its purpose, and the key technologies used. E.g., "A comprehensive, AI-native banking platform leveraging C#, Blazor, and Azure, with critical blockchain integrations."_
-
-- **Technologies:** C#, .NET, Blazor, Angular, Azure, MongoDB, Blockchain.
-- **[Link to Repository]** or **[Link to Live Demo]**
-
-#### **[Project Title 2 - e.g., a personal project]**
-
-_A brief description of another project, perhaps one from your university or a personal endeavor._
-
-- **Technologies:** [List the technologies used]
-- **[Link to Repository]** or **[Link to Live Demo]**
-
----
-
 ### 💼 Professional Experience Highlights
 
 - **Co-Founder & Head of Technology at Mintoria:** Led the full-stack design and development of an AI-native banking platform on Azure, integrating blockchain technologies.
