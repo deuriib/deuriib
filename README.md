@@ -1,50 +1,83 @@
-# Deuri Vasquez - Software Developer on a mission to innovate and create 💻🚀"
+# Hi there 👋, I'm Deuri Vasquez
 
 [![pages-build-deployment](https://github.com/deuriib/deuriib/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/deuriib/deuriib/actions/workflows/pages/pages-build-deployment)
 
-- Improve my knowledge in cloud technologies 🌩️
-- Collaborate with other developers on a project 🤝
+### Software Engineer | Full Stack .NET & Angular Developer
 
-#### What are your goals for the new year? Let's make them happen together! 👨‍💻
+I'm a highly experienced Software Engineer with a passion for designing and implementing efficient, scalable, and maintainable software systems. With over 8 years of hands-on experience, I specialize in full-stack development using C#, .NET, and Angular, and have a proven track record of delivering robust solutions for complex challenges.
 
-### Connect with me
+My expertise lies in backend development, system design, and building resilient applications that can handle substantial traffic. I'm also deeply experienced with Microsoft Azure, various databases, and modern development methodologies.
 
-<!-- [![website](./img/globe-light.svg)](https://codestackr.com#gh-light-mode-only)
-[![website](./img/globe-dark.svg)](https://codestackr.com#gh-dark-mode-only)
-&nbsp;&nbsp;
-[![website](./img/youtube-light.svg)](https://youtube.com/codestackr#gh-light-mode-only)
-[![website](./img/youtube-dark.svg)](https://youtube.com/codestackr#gh-dark-mode-only)
-&nbsp;&nbsp;-->
+---
 
-[![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/linkedin-dark.svg)](https://linkedin.com/in/deurivasquez#gh-light-mode-only)
-[![website](https://github.com/codeSTACKr/codeSTACKr/blob/master/img/linkedin-dark.svg)](https://linkedin.com/in/deurivasquez#gh-dark-mode-only)
+### 🚀 Technologies & Tools
 
-<!--&nbsp;&nbsp;
-[![website](./img/instagram-light.svg)](https://instagram.com/codeSTACKr#gh-light-mode-only)
-[![website](./img/instagram-dark.svg)](https://instagram.com/codeSTACKr#gh-dark-mode-only) -->
+Here's a snapshot of the technologies I work with:
 
-### Languages and Tools
+**Programming Languages:**
+<img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C#" />
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+<img src="https://img.shields.io/badge/T-SQL-CC2927?style=for-the-badge&logo=MicrosoftSQLServer&logoColor=white" alt="T-SQL" />
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
 
-<img align="left" alt="GitHub" width="26px" src="https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png" style="padding-right:10px;" />
-<img align="left" alt="Git" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" style="padding-right:10px;" />
-<img align="left" alt="Visual Studio Code" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" style="padding-right:10px;" />
-<img align="left" alt="HTML5" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" style="padding-right:10px;" />
-<img align="left" alt="CSS3" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" style="padding-right:10px;" />
-<img align="left" alt="JavaScript" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" style="padding-right:10px;" />
-<img align="left" alt="Node.js" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" style="padding-right:10px;" />
-<img align="left" alt="MongoDB" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" style="padding-right:10px;" />
-<img align="left" alt="GraphQL" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" style="padding-right:10px;" />
+**Frameworks & Libraries:**
+<img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET" />
+<img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular" />
+<img src="https://img.shields.io/badge/ASP.NET-512BD4?style=for-the-badge&logo=dot-net&logoColor=white" alt="ASP.NET" />
+<img src="https://img.shields.io/badge/Blazor-512BD4?style=for-the-badge&logo=blazor&logoColor=white" alt="Blazor" />
+<img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring" />
 
-<br />
-<br />
+**Databases:**
+<img src="https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" alt="SQL Server" />
+<img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+<img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="Oracle" />
 
-<!-- <details>
-  <summary>⚡ Recent GitHub Activity</summary> -->
+**Cloud & DevOps:**
+<img src="https://img.shields.io/badge/Microsoft%20Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure" />
+<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+<img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes" />
+<img src="https://img.shields.io/badge/Azure%20DevOps-0078D4?style=for-the-badge&logo=azure-devops&logoColor=white" alt="Azure DevOps" />
 
-<!--START_SECTION:activity-->
-<!-- 1. ❌ Closed PR [#5](https://github.com/deuriib/nft-landing-page/pull/5) in [deuriib/nft-landing-page](https://github.com/deuriib/nft-landing-page)
-2. 💪 Opened PR [#1580](https://github.com/anuraghazra/github-readme-stats/pull/1580) in [anuraghazra/github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
-3. 🗣 Commented on [#1572](https://github.com/anuraghazra/github-readme-stats/issues/1572) in [anuraghazra/github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
-4. 🎉 Merged PR [#1](https://github.com/mongodb-developer/mongodb-ecommerce/pull/1) in [mongodb-developer/mongodb-ecommerce](https://github.com/mongodb-developer/mongodb-ecommerce)
-5. 💪 Opened PR [#1](https://github.com/mongodb-developer/mongodb-ecommerce/pull/1) in [mongodb-developer/mongodb-ecommerce](https://github.com/mongodb-developer/mongodb-ecommerce) -->
-<!--END_SECTION:activity-->
+---
+
+### 💻 Featured Projects
+
+Feel free to explore some of my key projects, showcasing my skills in system design and full-stack development.
+
+#### **[Project Title 1 - e.g., Mintoria Platform]**
+
+_A brief, 1-2 sentence description of the project, its purpose, and the key technologies used. E.g., "A comprehensive, AI-native banking platform leveraging C#, Blazor, and Azure, with critical blockchain integrations."_
+
+- **Technologies:** C#, .NET, Blazor, Angular, Azure, MongoDB, Blockchain.
+- **[Link to Repository]** or **[Link to Live Demo]**
+
+#### **[Project Title 2 - e.g., a personal project]**
+
+_A brief description of another project, perhaps one from your university or a personal endeavor._
+
+- **Technologies:** [List the technologies used]
+- **[Link to Repository]** or **[Link to Live Demo]**
+
+---
+
+### 💼 Professional Experience Highlights
+
+- **Co-Founder & Head of Technology at Mintoria:** Led the full-stack design and development of an AI-native banking platform on Azure, integrating blockchain technologies.
+- **Backend .NET Developer at Baires Dev:** Optimized data processing algorithms, improving system performance by 20% and reducing downtime by 30%.
+- **Development Analyst at Scotiabank:** Successfully led the migration of 13 platforms to on-premise cloud servers and integrated critical services via REST APIs, enhancing productivity.
+
+---
+
+### 🌱 What I'm Currently Learning
+
+- [New language or framework you're exploring, e.g., "Exploring Rust for high-performance systems."]
+- [A new cloud service, e.g., "Deepening my knowledge of Azure Functions and Serverless architecture."]
+
+---
+
+### 📫 Let's Connect
+
+- **LinkedIn:** [https://www.linkedin.com/in/deurivasquez0/](https://www.linkedin.com/in/deurivasquez0/)
+- **Email:** [deuri.work@gmail.com](mailto:deuri.work@gmail.com)
+- **Portfolio/Website:** [https://deuriib.github.io/deuriib](https://deuriib.github.io/deuriib)
