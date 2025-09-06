@@ -10,9 +10,9 @@ My expertise lies in backend development, system design, and building resilient 
 
 ---
 
-### 🌱 What I'm Currently Learning
+### 🌱 What I'm Currently working on
 
-- Exploring Web2 to Web3 transitions and blockchain technologies.
+- As Mintoria's Inc, Head of Technology, Backend development, Infrastructure & System designing.
 
 ---
 
