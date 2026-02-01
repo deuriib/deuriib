@@ -565,35 +565,34 @@
         </div>`
       ];
       
-      // Store CSS3D objects for animation
-      window.cssObjects = [];
-      
-      contents.forEach((html, index) => {
-         const div = document.createElement('div');
-         div.innerHTML = html;
-         // Make wrapper transparent - only the card inside should be visible
-         div.style.display = 'block';
-         div.style.background = 'transparent';
-         div.style.border = 'none';
-         div.style.boxShadow = 'none';
-         div.style.overflow = 'visible';
-         // Initial state for smooth transitions
-         div.style.opacity = index === 0 ? '1' : '0.3';
-         div.style.transform = index === 0 ? 'scale(1)' : 'scale(0.8)';
-         div.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-         
-         const cssObject = new THREE.CSS3DObject(div);
-         cssObject.position.set(
-           stations[index].position.x,
-           stations[index].position.y,
-           stations[index].position.z
-         );
-         // Scale down more to fix zoom issue
-         cssObject.scale.set(0.025, 0.025, 0.025);
-         // Add to CSS scene, NOT the WebGL scene
-         cssScene.add(cssObject);
-         window.cssObjects.push(cssObject);
-       });
+       // Store CSS3D objects for animation
+       window.cssObjects = [];
+       
+       contents.forEach((html, index) => {
+          const div = document.createElement('div');
+          div.innerHTML = html;
+          // Make wrapper transparent - only the card inside should be visible
+          div.style.display = 'block';
+          div.style.background = 'transparent';
+          div.style.border = 'none';
+          div.style.boxShadow = 'none';
+          div.style.overflow = 'visible';
+          // Initial state for smooth transitions - only scale, no opacity fade
+          div.style.transform = index === 0 ? 'scale(1)' : 'scale(0.85)';
+          div.style.transition = 'transform 0.5s ease-out';
+          
+          const cssObject = new THREE.CSS3DObject(div);
+          cssObject.position.set(
+            stations[index].position.x,
+            stations[index].position.y,
+            stations[index].position.z
+          );
+          // Scale down more to fix zoom issue
+          cssObject.scale.set(0.025, 0.025, 0.025);
+          // Add to CSS scene, NOT the WebGL scene
+          cssScene.add(cssObject);
+          window.cssObjects.push(cssObject);
+        });
     }
     
     createContent();
@@ -608,48 +607,43 @@
       };
     }
     
-     function navigateTo(index) {
-       if (isAnimating || index === currentStation || index < 0 || index >= stations.length) return;
-       isAnimating = true;
-       
-       const prevIndex = currentStation;
-       const targetPos = getCameraPosition(index);
-       const duration = prefersReducedMotion ? 0 : 1500;
-       
-       // Fade out previous card
-       if (window.cssObjects && window.cssObjects[prevIndex]) {
-         const prevDiv = window.cssObjects[prevIndex].element;
-         prevDiv.style.opacity = '0.3';
-         prevDiv.style.transform = 'scale(0.8)';
-       }
-       
-       anime({
-         targets: camera.position,
-         x: targetPos.x,
-         y: targetPos.y,
-         z: targetPos.z,
-         duration: duration,
-         easing: 'easeInOutQuad',
-         complete: () => {
-           isAnimating = false;
-           currentStation = index;
-           updateNav();
-           
-           // Smoothly fade in and scale up the target card at end of transition
-           if (window.cssObjects && window.cssObjects[index]) {
-             const targetDiv = window.cssObjects[index].element;
-             // Small delay to ensure smooth alignment
-             setTimeout(() => {
-               targetDiv.style.opacity = '1';
-               targetDiv.style.transform = 'scale(1)';
-             }, 100);
-           }
-         }
-       });
-       
-       // Update progress
-       document.querySelector('.progress-fill').style.height = ((index / (stations.length - 1)) * 100) + '%';
-     }
+      function navigateTo(index) {
+        if (isAnimating || index === currentStation || index < 0 || index >= stations.length) return;
+        isAnimating = true;
+        
+        const prevIndex = currentStation;
+        const targetPos = getCameraPosition(index);
+        const duration = prefersReducedMotion ? 0 : 1500;
+        
+        // Scale down previous card
+        if (window.cssObjects && window.cssObjects[prevIndex]) {
+          const prevDiv = window.cssObjects[prevIndex].element;
+          prevDiv.style.transform = 'scale(0.85)';
+        }
+        
+        anime({
+          targets: camera.position,
+          x: targetPos.x,
+          y: targetPos.y,
+          z: targetPos.z,
+          duration: duration,
+          easing: 'easeInOutQuad',
+          complete: () => {
+            isAnimating = false;
+            currentStation = index;
+            updateNav();
+            
+            // Smoothly scale up the target card at end of transition
+            if (window.cssObjects && window.cssObjects[index]) {
+              const targetDiv = window.cssObjects[index].element;
+              targetDiv.style.transform = 'scale(1)';
+            }
+          }
+        });
+        
+        // Update progress
+        document.querySelector('.progress-fill').style.height = ((index / (stations.length - 1)) * 100) + '%';
+      }
     
     function updateNav() {
       document.querySelectorAll('.nav-station').forEach((nav, idx) => {
