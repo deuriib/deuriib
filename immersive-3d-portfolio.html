@@ -96,17 +96,18 @@
       transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
     }
     
-    /* Active state - full size and glow */
+    /* Active state - full size, full glow, fully visible */
     .station-card.station-active {
       transform: scale(1);
       box-shadow: 0 0 60px rgba(34, 197, 94, 0.3), inset 0 0 30px rgba(34, 197, 94, 0.1);
+      opacity: 1;
     }
     
-    /* Inactive state - slightly smaller, reduced glow */
+    /* Inactive state - slightly smaller, reduced glow, slightly dimmed */
     .station-card.station-inactive {
       transform: scale(0.9);
       box-shadow: 0 0 20px rgba(34, 197, 94, 0.1), inset 0 0 15px rgba(34, 197, 94, 0.05);
-      opacity: 0.9;
+      opacity: 0.85;
     }
     
     .floating-ui {
@@ -606,13 +607,18 @@
           cssScene.add(cssObject);
           window.cssObjects.push(cssObject);
           
-          // Mark initial active state on the inner card
-          const card = div.querySelector('.station-card');
-          if (card) {
-            card.classList.toggle('station-active', index === 0);
-            card.classList.toggle('station-inactive', index !== 0);
-          }
-        });
+           // Mark initial active state on the inner card
+           const card = div.querySelector('.station-card');
+           if (card) {
+             if (index === 0) {
+               card.classList.add('station-active');
+               card.classList.remove('station-inactive');
+             } else {
+               card.classList.add('station-inactive');
+               card.classList.remove('station-active');
+             }
+           }
+         });
     }
     
     createContent();
