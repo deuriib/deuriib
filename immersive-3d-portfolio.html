@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Immersive Portfolio | Cyberpunk Grid City</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS3DRenderer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'display': ['Archivo', 'sans-serif'],
+            'heading': ['Space Grotesk', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            'neon': {
+              green: '#22c55e',
+              cyan: '#06b6d4',
+              blue: '#3b82f6',
+              purple: '#8b5cf6',
+              pink: '#ec4899',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden;
+      background: #050508;
+      font-family: 'Archivo', sans-serif;
+    }
+    
+    #webgl-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    #css3d-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      pointer-events: none;
+    }
+    
+    #css3d-container > div {
+      pointer-events: auto;
+    }
+    
+    /* Ensure CSS3D elements are visible */
+    #css3d-container > div > div {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      backface-visibility: visible !important;
+    }
+    
+    /* Station Card - Explicit visibility */
+    .station-card {
+      background: linear-gradient(135deg, rgba(10, 10, 15, 0.95) 0%, rgba(5, 5, 8, 0.98) 100%);
+      border: 2px solid rgba(34, 197, 94, 0.5);
+      box-shadow: 0 0 60px rgba(34, 197, 94, 0.3), inset 0 0 30px rgba(34, 197, 94, 0.1);
+      padding: 2rem;
+      border-radius: 20px;
+      color: white;
+      width: 450px;
+      max-width: 90vw;
+      display: block;
+      visibility: visible;
+      opacity: 1;
+      backface-visibility: visible;
+      transform-style: preserve-3d;
+    }
+    
+    .floating-ui {
+      position: fixed;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .nav-station {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-station:hover, .nav-station.active {
+      opacity: 1;
+    }
+    
+    .nav-station.active .nav-dot {
+      background: #22c55e;
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
+      transform: scale(1.3);
+    }
+    
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #22c55e;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .progress-container {
+      position: fixed;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 200px;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      z-index: 100;
+    }
+    
+    .progress-fill {
+      width: 100%;
+      background: linear-gradient(to bottom, #22c55e, #06b6d4);
+      border-radius: 2px;
+      transition: height 0.3s ease;
+    }
+    
+    .scroll-hint {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+      z-index: 100;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    
+    .skill-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #06b6d4);
+      border-radius: 2px;
+    }
+    
+    .project-item {
+      border-left: 2px solid rgba(34, 197, 94, 0.3);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .project-item:hover {
+      border-left-color: #22c55e;
+      transform: translateX(5px);
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 100px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4ade80;
+      margin: 0.25rem;
+    }
+    
+    .btn-cyber {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(6, 182, 212, 0.1));
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      border-radius: 8px;
+      color: #4ade80;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    
+    .btn-cyber:hover {
+      background: rgba(34, 197, 94, 0.3);
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #22c55e;
+      line-height: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-container { right: 20px; }
+      .nav-label { display: none; }
+      .progress-container { left: 20px; }
+      .station-card { width: 300px; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="webgl-container"></div>
+  <div id="css3d-container"></div>
+  
+  <div class="floating-ui nav-container">
+    <div class="nav-station active" data-station="0">
+      <div class="nav-dot"></div>
+      <span class="nav-label">Start</span>
+    </div>
+    <div class="nav-station" data-station="1">
+      <div class="nav-dot"></div>
+      <span class="nav-label">About</span>
+    </div>
+    <div class="nav-station" data-station="2">
+      <div class="nav-dot"></div>
+      <span class="nav-label">Projects</span>
+    </div>
+    <div class="nav-station" data-station="3">
+      <div class="nav-dot"></div>
+      <span class="nav-label">Skills</span>
+    </div>
+    <div class="nav-station" data-station="4">
+      <div class="nav-dot"></div>
+      <span class="nav-label">Contact</span>
+    </div>
+  </div>
+  
+  <div class="progress-container">
+    <div class="progress-fill" style="height: 0%"></div>
+  </div>
+  
+  <div class="scroll-hint">
+    <span class="text-gray-400 text-sm font-mono">Scroll to navigate</span>
+    <svg class="w-6 h-6 text-neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7"></path>
+    </svg>
+  </div>
+
+  <script>
+    const isMobile = window.innerWidth < 768;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    // Station positions - cards face the Z direction
+    const stations = [
+      { id: 0, position: { x: 0, y: 0, z: 0 }, title: 'Hero' },
+      { id: 1, position: { x: 20, y: 0, z: -30 }, title: 'About' },
+      { id: 2, position: { x: -20, y: 0, z: -60 }, title: 'Projects' },
+      { id: 3, position: { x: 25, y: 0, z: -90 }, title: 'Skills' },
+      { id: 4, position: { x: 0, y: 0, z: -120 }, title: 'Contact' }
+    ];
+    
+    let currentStation = 0;
+    let isAnimating = false;
+    
+    // Three.js Setup
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x050508, 0.012);
+    
+    // SEPARATE scene for CSS3D objects (required!)
+    const cssScene = new THREE.Scene();
+    
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    
+    const renderer = new THREE.WebGLRenderer({ 
+      antialias: !isMobile,
+      alpha: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    // WebGL canvas should not capture pointer events - CSS3D needs them
+    renderer.domElement.style.pointerEvents = 'none';
+    document.getElementById('webgl-container').appendChild(renderer.domElement);
+    
+    // CSS3D Renderer - append to css3d-container for proper layering
+    const cssRenderer = new THREE.CSS3DRenderer();
+    cssRenderer.setSize(window.innerWidth, window.innerHeight);
+    const cssDom = cssRenderer.domElement;
+    cssDom.style.position = 'absolute';
+    cssDom.style.top = '0';
+    cssDom.style.left = '0';
+    cssDom.style.width = '100%';
+    cssDom.style.height = '100%';
+    document.getElementById('css3d-container').appendChild(cssDom);
+    
+    // Environment
+    const ambientLight = new THREE.AmbientLight(0x22c55e, 0.15);
+    scene.add(ambientLight);
+    
+    // Grid floor
+    const gridHelper = new THREE.GridHelper(300, 150, 0x22c55e, 0x0a1a0a);
+    gridHelper.position.y = -8;
+    gridHelper.material.opacity = 0.2;
+    gridHelper.material.transparent = true;
+    scene.add(gridHelper);
+    
+    // Floating structures
+    const structures = [];
+    const structureCount = isMobile ? 15 : 30;
+    const structureGeo = new THREE.BoxGeometry(1, 1, 1);
+    const structureMat = new THREE.MeshBasicMaterial({
+      color: 0x22c55e,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.25
+    });
+    
+    for (let i = 0; i < structureCount; i++) {
+      const mesh = new THREE.Mesh(structureGeo, structureMat);
+      mesh.position.set(
+        (Math.random() - 0.5) * 100,
+        Math.random() * 15 - 5,
+        -Math.random() * 150 + 20
+      );
+      mesh.scale.set(0.5 + Math.random(), 3 + Math.random() * 10, 0.5 + Math.random());
+      mesh.rotation.y = Math.random() * Math.PI;
+      mesh.userData = { rotSpeed: (Math.random() - 0.5) * 0.01 };
+      scene.add(mesh);
+      structures.push(mesh);
+    }
+    
+    // Particles
+    const particleCount = isMobile ? 80 : 200;
+    const particlesGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 120;
+      positions[i * 3 + 1] = Math.random() * 30 - 5;
+      positions[i * 3 + 2] = -Math.random() * 150 + 20;
+    }
+    
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    
+    const particlesMat = new THREE.PointsMaterial({
+      color: 0x22c55e,
+      size: 0.4,
+      transparent: true,
+      opacity: 0.6
+    });
+    
+    const particles = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particles);
+    
+    // Create HTML Content
+    function createContent() {
+      const contents = [
+        `<div class="station-card" style="width: 450px; max-width: 90vw;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-3 h-3 rounded-full bg-neon-green"></div>
+            <span class="font-mono text-sm text-neon-green tracking-widest">SYSTEM ONLINE</span>
+          </div>
+          <h1 class="font-heading text-4xl font-bold mb-4">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-green via-neon-cyan to-neon-blue">Developer.</span><br>
+            <span class="text-white">Architect.</span><br>
+            <span class="text-gray-400">Fullstack.</span>
+          </h1>
+          <p class="text-gray-400 mb-6">Building digital experiences in the grid city.</p>
+          <div class="flex gap-4">
+            <button class="btn-cyber" onclick="window.navigateTo(1)">Explore</button>
+            <button class="btn-cyber" style="background: transparent;" onclick="window.navigateTo(4)">Contact</button>
+          </div>
+          <div class="flex gap-8 mt-8 pt-6 border-t border-white/10">
+            <div>
+              <div class="stat-number">8+</div>
+              <div class="text-gray-500 text-sm font-mono">Years</div>
+            </div>
+            <div>
+              <div class="stat-number">50+</div>
+              <div class="text-gray-500 text-sm font-mono">Projects</div>
+            </div>
+          </div>
+        </div>`,
+        
+        `<div class="station-card" style="width: 450px; max-width: 90vw;">
+          <span class="font-mono text-sm text-neon-cyan tracking-widest">ABOUT ME</span>
+          <h2 class="font-heading text-3xl font-bold text-white mt-2 mb-4">Code meets architecture</h2>
+          <p class="text-gray-400 mb-6">
+            I approach every project with an architect's mindset—considering not just what works today, 
+            but what scales tomorrow.
+          </p>
+          <div class="space-y-4 mb-6">
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 rounded-full bg-neon-green mt-2"></div>
+              <div>
+                <div class="text-white font-semibold">Senior Fullstack Engineer</div>
+                <div class="text-gray-500 text-sm">2024 — Present</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 rounded-full bg-neon-cyan mt-2"></div>
+              <div>
+                <div class="text-white font-semibold">Fullstack Developer</div>
+                <div class="text-gray-500 text-sm">2021 — 2024</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 rounded-full bg-neon-blue mt-2"></div>
+              <div>
+                <div class="text-white font-semibold">Software Engineer</div>
+                <div class="text-gray-500 text-sm">2018 — 2021</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-cyber" onclick="window.navigateTo(2)">View Projects</button>
+        </div>`,
+        
+        `<div class="station-card" style="width: 450px; max-width: 90vw;">
+          <span class="font-mono text-sm text-neon-cyan tracking-widest">SELECTED WORK</span>
+          <h2 class="font-heading text-3xl font-bold text-white mt-2 mb-6">Projects</h2>
+          
+          <div class="project-item">
+            <div class="flex gap-2 mb-1">
+              <span class="tag">React</span><span class="tag">Node.js</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Real-Time Analytics</h3>
+            <p class="text-gray-400 text-sm">10M+ events daily dashboard</p>
+          </div>
+          
+          <div class="project-item">
+            <div class="flex gap-2 mb-1">
+              <span class="tag">Next.js</span><span class="tag">GraphQL</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Auth Microservice</h3>
+            <p class="text-gray-400 text-sm">JWT, OAuth2, MFA support</p>
+          </div>
+          
+          <div class="project-item">
+            <div class="flex gap-2 mb-1">
+              <span class="tag">TypeScript</span><span class="tag">AWS</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Document Pipeline</h3>
+            <p class="text-gray-400 text-sm">OCR and ML processing</p>
+          </div>
+          
+          <button class="btn-cyber mt-2" onclick="window.navigateTo(3)">View Skills</button>
+        </div>`,
+        
+        `<div class="station-card" style="width: 450px; max-width: 90vw;">
+          <span class="font-mono text-sm text-neon-cyan tracking-widest">EXPERTISE</span>
+          <h2 class="font-heading text-3xl font-bold text-white mt-2 mb-6">Technologies</h2>
+          
+          <div class="space-y-3 mb-6">
+            <div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-300">React / Next.js</span>
+                <span class="text-neon-green font-mono">95%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-300">TypeScript</span>
+                <span class="text-neon-green font-mono">98%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 98%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-300">Node.js / Express</span>
+                <span class="text-neon-cyan font-mono">96%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 96%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-300">AWS / Docker</span>
+                <span class="text-neon-blue font-mono">92%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 92%"></div></div>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag">GraphQL</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span>
+            <span class="tag">Kafka</span><span class="tag">K8s</span>
+          </div>
+          
+          <button class="btn-cyber" onclick="window.navigateTo(4)">Contact</button>
+        </div>`,
+        
+        `<div class="station-card" style="width: 450px; max-width: 90vw;">
+          <span class="font-mono text-sm text-neon-cyan tracking-widest">CONTACT</span>
+          <h2 class="font-heading text-3xl font-bold text-white mt-2 mb-4">Let's build together</h2>
+          <p class="text-gray-400 mb-6">Ready to start a project? Reach out and let's create something amazing.</p>
+          
+          <div class="space-y-3 mb-6">
+            <a href="mailto:hello@developer.com" class="flex items-center gap-3 text-gray-300 hover:text-neon-green transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              <span>hello@developer.com</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 text-gray-300 hover:text-neon-green transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+          
+          <div class="flex items-center gap-2 pt-4 border-t border-white/10">
+            <div class="w-2 h-2 rounded-full bg-neon-green"></div>
+            <span class="text-neon-green font-mono text-sm">Available for hire</span>
+          </div>
+        </div>`
+      ];
+      
+      contents.forEach((html, index) => {
+        const div = document.createElement('div');
+        div.innerHTML = html;
+        // Make wrapper transparent - only the card inside should be visible
+        div.style.display = 'block';
+        div.style.background = 'transparent';
+        div.style.border = 'none';
+        div.style.boxShadow = 'none';
+        div.style.overflow = 'visible';
+        
+        const cssObject = new THREE.CSS3DObject(div);
+        cssObject.position.set(
+          stations[index].position.x,
+          stations[index].position.y,
+          stations[index].position.z
+        );
+        // Scale down more to fix zoom issue
+        cssObject.scale.set(0.025, 0.025, 0.025);
+        // Add to CSS scene, NOT the WebGL scene
+        cssScene.add(cssObject);
+      });
+    }
+    
+    createContent();
+    
+    // Camera positions - looking at cards from front
+    function getCameraPosition(stationIndex) {
+      const station = stations[stationIndex];
+      return {
+        x: station.position.x,
+        y: station.position.y,
+        z: station.position.z + (isMobile ? 15 : 25) // Camera positioned for optimal viewing with scaled CSS3D
+      };
+    }
+    
+    function navigateTo(index) {
+      if (isAnimating || index === currentStation || index < 0 || index >= stations.length) return;
+      isAnimating = true;
+      
+      const targetPos = getCameraPosition(index);
+      const duration = prefersReducedMotion ? 0 : 1500;
+      
+      anime({
+        targets: camera.position,
+        x: targetPos.x,
+        y: targetPos.y,
+        z: targetPos.z,
+        duration: duration,
+        easing: 'easeInOutQuad',
+        complete: () => {
+          isAnimating = false;
+          currentStation = index;
+          updateNav();
+        }
+      });
+      
+      // Update progress
+      document.querySelector('.progress-fill').style.height = ((index / (stations.length - 1)) * 100) + '%';
+    }
+    
+    function updateNav() {
+      document.querySelectorAll('.nav-station').forEach((nav, idx) => {
+        nav.classList.toggle('active', idx === currentStation);
+      });
+    }
+    
+    // Scroll handling
+    let scrollTimeout;
+    window.addEventListener('wheel', (e) => {
+      if (isAnimating) return;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        if (e.deltaY > 0) navigateTo(currentStation + 1);
+        else navigateTo(currentStation - 1);
+      }, 100);
+    }, { passive: true });
+    
+    // Nav clicks
+    document.querySelectorAll('.nav-station').forEach(nav => {
+      nav.addEventListener('click', () => {
+        navigateTo(parseInt(nav.dataset.station));
+      });
+    });
+    
+    // Keyboard
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') navigateTo(currentStation + 1);
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') navigateTo(currentStation - 1);
+    });
+    
+    // Initial camera position
+    const startPos = getCameraPosition(0);
+    camera.position.set(startPos.x, startPos.y, startPos.z);
+    
+    // Animation loop
+    let frameCount = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      frameCount++;
+      if (isMobile && frameCount % 2 !== 0) return;
+      
+      const time = Date.now() * 0.001;
+      
+      // Animate environment
+      structures.forEach(s => {
+        s.rotation.y += s.userData.rotSpeed;
+      });
+      
+      // Camera always looks at current station
+      const lookTarget = stations[currentStation].position;
+      camera.lookAt(lookTarget.x, lookTarget.y, lookTarget.z);
+      
+      renderer.render(scene, camera);
+      cssRenderer.render(cssScene, camera);
+    }
+    
+    animate();
+    updateNav();
+    
+    // Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      cssRenderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    // Make global
+    window.navigateTo = navigateTo;
+  </script>
+</body>
+</html>
