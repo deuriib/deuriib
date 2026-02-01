@@ -93,6 +93,20 @@
       opacity: 1;
       backface-visibility: visible;
       transform-style: preserve-3d;
+      transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+    }
+    
+    /* Active state - full size and glow */
+    .station-card.station-active {
+      transform: scale(1);
+      box-shadow: 0 0 60px rgba(34, 197, 94, 0.3), inset 0 0 30px rgba(34, 197, 94, 0.1);
+    }
+    
+    /* Inactive state - slightly smaller, reduced glow */
+    .station-card.station-inactive {
+      transform: scale(0.9);
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.1), inset 0 0 15px rgba(34, 197, 94, 0.05);
+      opacity: 0.9;
     }
     
     .floating-ui {
@@ -577,9 +591,8 @@
           div.style.border = 'none';
           div.style.boxShadow = 'none';
           div.style.overflow = 'visible';
-          // Initial state for smooth transitions - only scale, no opacity fade
-          div.style.transform = index === 0 ? 'scale(1)' : 'scale(0.85)';
-          div.style.transition = 'transform 0.5s ease-out';
+          // IMPORTANT: Do NOT apply CSS transforms here - CSS3D renderer uses transform for positioning
+          // Instead, we apply visual effects to the inner .station-card element
           
           const cssObject = new THREE.CSS3DObject(div);
           cssObject.position.set(
@@ -592,6 +605,13 @@
           // Add to CSS scene, NOT the WebGL scene
           cssScene.add(cssObject);
           window.cssObjects.push(cssObject);
+          
+          // Mark initial active state on the inner card
+          const card = div.querySelector('.station-card');
+          if (card) {
+            card.classList.toggle('station-active', index === 0);
+            card.classList.toggle('station-inactive', index !== 0);
+          }
         });
     }
     
@@ -615,10 +635,13 @@
         const targetPos = getCameraPosition(index);
         const duration = prefersReducedMotion ? 0 : 1500;
         
-        // Scale down previous card
+        // Mark previous card as inactive
         if (window.cssObjects && window.cssObjects[prevIndex]) {
-          const prevDiv = window.cssObjects[prevIndex].element;
-          prevDiv.style.transform = 'scale(0.85)';
+          const prevCard = window.cssObjects[prevIndex].element.querySelector('.station-card');
+          if (prevCard) {
+            prevCard.classList.remove('station-active');
+            prevCard.classList.add('station-inactive');
+          }
         }
         
         anime({
@@ -633,10 +656,13 @@
             currentStation = index;
             updateNav();
             
-            // Smoothly scale up the target card at end of transition
+            // Mark target card as active at end of transition
             if (window.cssObjects && window.cssObjects[index]) {
-              const targetDiv = window.cssObjects[index].element;
-              targetDiv.style.transform = 'scale(1)';
+              const targetCard = window.cssObjects[index].element.querySelector('.station-card');
+              if (targetCard) {
+                targetCard.classList.remove('station-inactive');
+                targetCard.classList.add('station-active');
+              }
             }
           }
         });
