@@ -1,7 +1,5 @@
 # Hi there 👋, I'm Deuri Vasquez
 
-[![pages-build-deployment](https://github.com/deuriib/deuriib/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/deuriib/deuriib/actions/workflows/pages/pages-build-deployment)
-
 ### Software Engineer
 
 I'm a highly experienced Software Engineer with a passion for designing and implementing efficient, scalable, and maintainable software systems. With over 8 years of hands-on experience, I specialize in full-stack development using C# .NET, NodeJs and Angular, and have a proven track record of delivering robust solutions for complex challenges.
