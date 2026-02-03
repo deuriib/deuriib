@@ -13,7 +13,7 @@ This project directory primarily contains documentation—most significantly, th
 - **Maintainer:** Deuri Vasquez
 - **Expertise:** Full-stack (C# .NET, Node.js, Angular), backend design, infrastructure, Microsoft Azure, databases
 - **Primary documentation:** README.md (contains professional background and contact details)
-- **Active Projects:** As referenced, Deuri is/was working as Mintoria's Inc, Head of Technology, focusing on backend development, infrastructure, and systems design.
+- **Active Projects:** As referenced, Deuri is/was working as Mintoria's Ltd, Head of Technology, focusing on backend development, infrastructure, and systems design.
 
 ## Current Status
 
